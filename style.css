@@ -151,7 +151,7 @@ body.shake main{animation:shake .28s steps(3)}
 .term-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid rgba(192,64,255,.35);font:12px var(--m);color:var(--mag)}
 .term-bar i{width:9px;height:9px;border-radius:50%;background:var(--mag);opacity:.6}
 .term-bar span{margin-left:10px}
-.term-body{font:14px/1.9 var(--m);color:var(--cyan2);padding:20px 22px;white-space:pre-wrap;min-height:230px}
+.term-body{font:14px/1.9 var(--m);color:var(--cyan2);padding:20px 22px;white-space:pre-wrap;min-height:420px}
 .term-body .c{color:var(--mag)}.term-body .d{color:var(--dim)}
 .terminal .btn{margin:0 22px}
 
