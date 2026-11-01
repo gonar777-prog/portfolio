@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GONAR // Motion · Animation · AI</title>
+<meta name="description" content="Портфолио GONAR: анимация, моушн-дизайн, 3D и AI-пайплайны. Каналы PARANORMA и GONAR FORCE.">
+<meta name="theme-color" content="#030611">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,600;1,800;1,900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="booting">
+
+<canvas id="space" aria-hidden="true"></canvas>
+<div class="fx-grain" aria-hidden="true"></div>
+<div class="fx-scan" aria-hidden="true"></div>
+<div class="fx-vignette" aria-hidden="true"></div>
+<div class="fx-glitch" id="screenGlitch" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><i></i><b></b></div>
+
+<!-- BOOT -->
+<div id="boot" role="status">
+  <pre id="bootLog"></pre>
+  <div class="boot-bar"><i id="bootFill"></i></div>
+  <button id="bootSkip" class="btn ghost" type="button">SKIP ▸</button>
+</div>
+
+<header class="hud-top" id="top">
+  <a href="#hero" class="logo glitch" data-text="GONAR">GONAR</a>
+  <nav id="nav">
+    <a href="#reel" data-i="reel">Showreel</a>
+    <a href="#projects" data-i="projects">Проекты</a>
+    <a href="#gallery" data-i="gallery">Визуал</a>
+    <a href="#channels" data-i="channels">Каналы</a>
+    <a href="#skills" data-i="skills">Навыки</a>
+    <a href="#freelance" data-i="freelance">Freelance</a>
+    <a href="#about" data-i="about">Обо мне</a>
+    <a href="#contact" data-i="contact">Контакты</a>
+  </nav>
+  <div class="tools">
+    <a class="chip tg" href="https://t.me/aid99999" target="_blank" rel="noopener" title="Telegram @aid99999">TG ↗</a>
+    <button id="sndBtn" class="chip" type="button" aria-pressed="false" title="Sound">SND <span id="sndState">OFF</span></button>
+    <button id="langBtn" class="chip" type="button" title="Language"><span class="on">RU</span>/<span>EN</span></button>
+    <button id="burger" class="chip burger" type="button" aria-label="menu">☰</button>
+  </div>
+</header>
+
+<aside class="telemetry" aria-hidden="true">
+  <div>SCROLL <b id="tScroll">000</b>%</div>
+  <div>FPS <b id="tFps">--</b></div>
+  <div>LAT <b id="tLat">50.45</b></div>
+  <div>LON <b id="tLon">30.52</b></div>
+  <div class="tbar"><i id="tBar"></i></div>
+</aside>
+
+<main>
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  <div class="hero-meta top"><span>GONAR / MOTION LAB</span><span>DEEP FIELD / 01</span></div>
+  <div class="hero-inner">
+    <p class="kicker" data-i="hero_kicker">ДОБРО ПОЖАЛОВАТЬ В НОВУЮ ВСЕЛЕННУЮ</p>
+    <h1 class="glitch big" data-text="GONAR">GONAR</h1>
+    <h2 class="roles" id="roles"><span>ANIMATION</span><span>MOTION</span><span>3D</span><span>AI&nbsp;PIPELINES</span></h2>
+    <p class="toolstrip">AFTER EFFECTS · PREMIERE PRO · PHOTOSHOP · BLENDER</p>
+    <p class="lead" data-i="hero_lead">Твои идеи. Моя реализация. Визуал, который невозможно игнорировать.</p>
+    <div class="cta">
+      <a class="btn" href="#projects" data-i="cta1">Смотреть проекты</a>
+      <a class="btn ghost" href="#contact" data-i="cta2">Заказать видео</a>
+      <a class="btn tgbtn" href="https://t.me/aid99999" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21.5 3.5 2.8 10.8l5.2 2 2 6.3 3-3.3 4.8 3.6z"/></svg><span data-i="tg_btn">Написать в Telegram</span></a>
+    </div>
+  </div>
+  <div class="hero-meta bottom"><span>DESIGN / MOTION / INTELLIGENCE</span><span class="scrollhint" data-i="scroll">SCROLL ↓</span></div>
+</section>
+
+<!-- SHOWREEL -->
+<section id="reel" class="sec">
+  <header class="sec-head reveal"><span class="idx">01 /</span><h2 class="glitch" data-text="SHOWREEL" data-i="h_reel">SHOWREEL</h2><span class="line"></span></header>
+  <div class="frame reveal" id="reelFrame">
+    <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+    <video id="reelVideo" muted loop playsinline preload="none" poster="assets/poster/intro.jpg" data-src="assets/video/intro.mp4"></video>
+    <div class="frame-ui"><span class="rec">● REC</span><span id="reelTime">00:00</span><span>PARANORMA / INTRO</span></div>
+    <button class="playbig" id="reelPlay" type="button" aria-label="play"><i></i></button>
+  </div>
+  <p class="cap reveal" data-i="reel_cap">Интро PARANORMA — нажми, чтобы смотреть со звуком. Остальные работы ниже.</p>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sec">
+  <header class="sec-head reveal"><span class="idx">02 /</span><h2 class="glitch" data-text="PROJECTS" data-i="h_projects">ПРОЕКТЫ</h2><span class="line"></span></header>
+  <div class="filters reveal" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="sec">
+  <header class="sec-head reveal"><span class="idx">03 /</span><h2 class="glitch" data-text="VISUALS" data-i="h_gallery">ВИЗУАЛ</h2><span class="line"></span></header>
+  <div class="filters reveal" id="gFilters"></div>
+  <div class="gal" id="gal"></div>
+</section>
+
+<!-- CHANNELS -->
+<section id="channels" class="sec">
+  <header class="sec-head reveal"><span class="idx">04 /</span><h2 class="glitch" data-text="CHANNELS" data-i="h_channels">КАНАЛЫ</h2><span class="line"></span></header>
+  <div class="two">
+    <a class="holo tilt reveal chan" href="https://www.youtube.com/@PARANORMA777" target="_blank" rel="noopener" style="--hue:300">
+      <img class="bg" src="assets/img/shapka_kanala.webp" alt="PARANORMA" loading="lazy"><img class="avatar" src="assets/img/t_logo_round.webp" alt="" loading="lazy">
+      <div class="holo-body"><small>YOUTUBE / HORROR ANIMATION</small><h3>PARANORMA</h3><p data-i="ch1">Анимационные хоррор-истории: городские легенды, тишина в эфире и то, что смотрит на тебя из темноты.</p><span class="go">youtube.com/@PARANORMA777 ↗</span></div>
+    </a>
+    <a class="holo tilt reveal chan" href="https://www.youtube.com/@gonarforce" target="_blank" rel="noopener" style="--hue:190">
+      <img class="bg" src="assets/img/gf_logo.webp" alt="GONAR FORCE" loading="lazy">
+      <div class="holo-body"><small>YOUTUBE / CINEMA</small><h3>GONAR FORCE</h3><p data-i="ch2">Сериалы и фильмы сквозь призму цветных линз — авторские обзоры.</p><span class="go">youtube.com/@gonarforce ↗</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec">
+  <header class="sec-head reveal"><span class="idx">05 /</span><h2 class="glitch" data-text="SYSTEMS" data-i="h_skills">НАВЫКИ</h2><span class="line"></span></header>
+  <div class="skills" id="skillGrid"></div>
+</section>
+
+<!-- FREELANCEHUNT -->
+<section id="freelance" class="sec">
+  <header class="sec-head reveal"><span class="idx">06 /</span><h2 class="glitch" data-text="FREELANCE" data-i="h_fl">FREELANCEHUNT</h2><span class="line"></span></header>
+  <div class="terminal reveal">
+    <div class="term-bar"><i></i><i></i><i></i><span>gonar@freelancehunt:~$</span></div>
+    <pre id="termFl" class="term-body"></pre>
+    <a class="btn" href="https://freelancehunt.com/freelancer/gonar.html#portfolio" target="_blank" rel="noopener" data-i="fl_btn">Открыть профиль и портфолио ↗</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <header class="sec-head reveal"><span class="idx">07 /</span><h2 class="glitch" data-text="ABOUT" data-i="h_about">ОБО МНЕ</h2><span class="line"></span></header>
+  <div class="about reveal">
+    <div class="about-txt">
+      <p data-i="about1">Я делаю видео, которое хочется досмотреть: анимационные истории, моушн-графику и 3D, а где это даёт результат — подключаю нейросети и собираю из них собственные пайплайны.</p>
+      <p data-i="about2">Сам пишу сюжеты, делаю раскадровку, озвучку и звук, анимацию и монтаж. Один человек — вся студия: от идеи до готового ролика.</p>
+    </div>
+    <div class="stats">
+      <div><b data-count="0" id="cntWorks">0</b><span data-i="st1">работ в портфолио</span></div>
+      <div><b data-count="2">0</b><span data-i="st2">YouTube-канала</span></div>
+      <div><b data-count="2">0</b><span data-i="st3">языка: RU / EN</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <header class="sec-head reveal"><span class="idx">08 /</span><h2 class="glitch" data-text="CONTACT" data-i="h_contact">КОНТАКТЫ</h2><span class="line"></span></header>
+  <div class="two">
+    <form class="frame form reveal" id="form">
+      <label><span data-i="f_name">Имя</span><input name="name" required autocomplete="name"></label>
+      <label><span data-i="f_msg">Задача</span><textarea name="msg" rows="4" required></textarea></label>
+      <button class="btn" type="submit" data-i="f_send">Отправить сигнал ▸</button>
+      <small id="formNote" data-i="f_note">Откроется ваша почтовая программа с готовым письмом.</small>
+    </form>
+    <div class="frame reveal links">
+      <small>TELEGRAM</small>
+      <a class="btn tgbtn" href="https://t.me/aid99999" target="_blank" rel="noopener">@aid99999 · Sylar ↗</a>
+      <small>E-MAIL</small>
+      <a class="mail glitch" data-text="gonar777@gmail.com" href="mailto:gonar777@gmail.com">gonar777@gmail.com</a>
+      <small>YOUTUBE</small>
+      <a href="https://www.youtube.com/@PARANORMA777" target="_blank" rel="noopener">PARANORMA ↗</a>
+      <a href="https://www.youtube.com/@gonarforce" target="_blank" rel="noopener">GONAR FORCE ↗</a>
+      <small>FREELANCE</small>
+      <a href="https://freelancehunt.com/freelancer/gonar.html#portfolio" target="_blank" rel="noopener">Freelancehunt ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><span>© 2026 GONAR</span><a class="tgf" href="https://t.me/aid99999" target="_blank" rel="noopener">TELEGRAM @aid99999 ↗</a><span>DESIGN / MOTION / INTELLIGENCE</span><a href="#hero">↑ TOP</a></footer>
+
+<!-- MODAL -->
+<div id="modal" class="modal" hidden>
+  <div class="modal-box frame">
+    <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+    <button id="mClose" class="chip" type="button">✕ ESC</button>
+    <div class="fmts" id="mFmts"></div>
+    <video id="mVideo" controls playsinline preload="none"></video>
+    <div class="modal-info"><small id="mMeta"></small><h3 id="mTitle"></h3><p id="mDesc"></p></div>
+  </div>
+</div>
+
+<div id="lb" class="modal lb" hidden><button id="lbClose" class="chip" type="button">✕ ESC</button><button id="lbPrev" class="chip lbn" type="button">‹</button><img id="lbImg" alt=""><button id="lbNext" class="chip lbn" type="button">›</button><p id="lbCap"></p></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
