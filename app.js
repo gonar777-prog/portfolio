@@ -127,7 +127,7 @@ function buildSkills(){
 let flTimer;
 function buildFl(){
   const T=I18N[lang], el=$('#termFl'); clearTimeout(flTimer);
-  const txt=`<span class="c">$</span> whoami\ngonar — ${T.flhead}\n<span class="c">$</span> ls ./services\n`+T.fl.map(s=>'  ▸ '+s).join('\n')+`\n<span class="c">$</span> cat portfolio.link\nfreelancehunt.com/freelancer/gonar.html\n<span class="d">${T.flnote}</span>`;
+  const txt=`<span class="c">$</span> whoami\n${T.flhead}\n<span class="c">$</span> ls ./services\n`+T.fl.map(s=>'  ▸ '+s).join('\n')+`\n<span class="c">$</span> cat portfolio.link\nfreelancehunt.com/freelancer/gonar.html\n<span class="d">${T.flnote}</span>`;
   if(reduce){el.innerHTML=txt;return;}
   // type visible chars, keep tags intact
   const parts=txt.split(/(<[^>]+>)/); let pi=0,ci=0,out='';
