@@ -55,11 +55,27 @@ window.GALLERY = [
  {id:"card_liza", ch:"paranorma", type:"char", ar:1.778, title:"Карточка · Лиза"},
  {id:"card_conductor", ch:"paranorma", type:"char", ar:1.778, title:"Карточка · Кондуктор-призрак"},
  {id:"gf_logo", ch:"gonar", type:"logo", ar:1.778, title:"GONAR FORCE · логотип"},
+ {id:"gf_harley", ch:"gonar", type:"thumb", ar:1.747, title:"Харли Квинн · обзор"},
+ {id:"gf_darthmaul", ch:"gonar", type:"thumb", ar:1.778, title:"Цветные линзы ситха · Дарт Мол"},
+ {id:"gf_lenses_mesh", ch:"gonar", type:"thumb", ar:1.778, title:"Линзы «белая сетка» · слепые"},
+ {id:"gf_greenlantern", ch:"gonar", type:"thumb", ar:1.778, title:"Зелёный Фонарь · обзор мультсериала"},
+ {id:"art_vortex", ch:"gonar", type:"art", ar:0.7, title:"Фотоарт · вихрь облаков и солнце"},
+ {id:"gf_nos4a2", ch:"gonar", type:"thumb", ar:1.782, title:"NOS4A2 · обзор"},
+ {id:"art_vampire_portrait", ch:"gonar", type:"art", ar:0.995, title:"Фотоарт · портрет вампира"},
+ {id:"gf_vampire", ch:"gonar", type:"thumb", ar:1.778, title:"Вампир · красные линзы"},
+ {id:"gf_witcher", ch:"gonar", type:"thumb", ar:1.747, title:"Ведьмак · обзор"},
+ {id:"art_sith", ch:"gonar", type:"art", ar:1.778, title:"Фотоарт · ситх в капюшоне"},
+ {id:"gf_kontiki", ch:"gonar", type:"thumb", ar:1.747, title:"Кон-Тики · ссылка в описании"},
+ {id:"gf_scary_lenses", ch:"gonar", type:"thumb", ar:1.778, title:"Страшные линзы · бельмо"},
+ {id:"card_bag1", ch:"gonar", type:"card", ar:0.75, title:"Карточка товара · рюкзак-трансформер"},
+ {id:"card_bag2", ch:"gonar", type:"card", ar:0.75, title:"Карточка товара · вместительный рюкзак"},
+ {id:"card_bag3", ch:"gonar", type:"card", ar:0.75, title:"Карточка товара · трансформер 70 см"},
+ {id:"gf_darkmaterials", ch:"gonar", type:"thumb", ar:1.778, title:"Тёмные начала · обзор"},
  // @@GALLERY_END@@
 ];
-window.GCATS = {all:["Все","All"], paranorma:["PARANORMA","PARANORMA"], gonar:["GONAR FORCE","GONAR FORCE"], logo:["Логотипы","Logos"], banner:["Шапки","Banners"], thumb:["Превью","Thumbnails"], char:["Персонажи","Characters"]};
+window.GCATS = {all:["Все","All"], paranorma:["PARANORMA","PARANORMA"], gonar:["GONAR FORCE","GONAR FORCE"], logo:["Логотипы","Logos"], banner:["Шапки","Banners"], thumb:["Превью","Thumbnails"], art:["Photoshop-арты","Photoshop Art"], card:["Дизайн карточек","Card Design"], char:["Персонажи","Characters"]};
 window.SKILLS = [
- ["After Effects","motion / compositing"],["Photoshop","retouch / key art"],["Premiere Pro","editing / color / sound"],["Blender","3D / EEVEE / procedural"],["Remotion","video in code"],
+ ["After Effects","motion / compositing"],["Photoshop","retouch / key art"],["Дизайн превью","thumbnails / cards"],["Premiere Pro","editing / color / sound"],["Blender","3D / EEVEE / procedural"],["Remotion","video in code"],
  ["ComfyUI","local AI pipelines"],["ElevenLabs","voice / v3"],["Whisper","timing / subtitles"],
  ["FFmpeg","encode / QC"],["Python","automation"],["Sound design","music / SFX / mix"],["Storyboard","script / pacing"]
 ];
@@ -68,24 +84,24 @@ window.I18N = {
   reel:"Showreel",projects:"Проекты",gallery:"Визуал",h_gallery:"ВИЗУАЛ",tg_btn:"Написать в Telegram",channels:"Каналы",skills:"Навыки",freelance:"Freelance",about:"Обо мне",contact:"Контакты",
   h_reel:"SHOWREEL",h_projects:"ПРОЕКТЫ",h_channels:"КАНАЛЫ",h_skills:"НАВЫКИ",h_fl:"FREELANCEHUNT",h_about:"ОБО МНЕ",h_contact:"КОНТАКТЫ",
   reel_cap:"Интро PARANORMA — нажми, чтобы смотреть со звуком. Остальные работы ниже.",
-  ch1:"Анимационные хоррор-истории: городские легенды, тишина в эфире и то, что смотрит на тебя из темноты.",ch2:"Сериалы и фильмы сквозь призму цветных линз — авторские обзоры.",
+  ch1:"Анимационные хоррор-истории: городские легенды, тишина в эфире и то, что смотрит на тебя из темноты.",ch2:"Обзоры фильмов и сериалов и цветные контактные линзы — авторский канал с яркими превью.",
   fl_btn:"Открыть профиль и портфолио ↗",
   about1:"Я делаю видео, которое хочется досмотреть: анимационные истории, моушн-графику и 3D, а где это даёт результат — подключаю нейросети и собираю из них собственные пайплайны.",
   about2:"Сам пишу сюжеты, делаю раскадровку, озвучку и звук, анимацию и монтаж. Один человек — вся студия: от идеи до готового ролика.",
   st1:"работ в портфолио",st2:"YouTube-канала",st3:"языка: RU / EN",
   f_name:"Имя",f_msg:"Задача",f_send:"Отправить сигнал ▸",f_note:"Откроется ваша почтовая программа с готовым письмом.",
-  watch:"СМОТРЕТЬ",fl:["3D Particle-анимация","Motion-анимация + звуковые эффекты","Монтаж и эффекты","Ретушь кожи на видео","Цензура лиц по всему видео","Обработка фото в Photoshop + анимация изображения","Дипфейк / липсинк","Анимация субтитров и логотипов","Редактура видео: удаление логотипов и надписей","Монтаж для YouTube-каналов","Параллакс-анимация","Нарезка стока для крео-рекламы","Photoshop-лайфхаки: монтаж и запись"],
+  watch:"СМОТРЕТЬ",fl:["3D Particle-анимация","Motion-анимация + звуковые эффекты","Монтаж и эффекты","Ретушь кожи на видео","Цензура лиц по всему видео","Обработка фото в Photoshop + анимация изображения","Дипфейк / липсинк","Анимация субтитров и логотипов","Редактура видео: удаление логотипов и надписей","Монтаж для YouTube-каналов","Параллакс-анимация","Нарезка стока для крео-рекламы","Photoshop-лайфхаки: монтаж и запись","Дизайн превью для YouTube","Инфографика / карточки товаров для маркетплейсов"],
   flhead:"ПРОФИЛЬ НА FREELANCEHUNT",flnote:"# полный список работ и отзывы — на странице профиля"},
  en:{hero_kicker:"WELCOME TO A NEW UNIVERSE",hero_lead:"Your ideas. My execution. Visuals impossible to ignore.",cta1:"View projects",cta2:"Order a video",scroll:"SCROLL ↓",
   reel:"Showreel",projects:"Projects",gallery:"Visuals",h_gallery:"VISUALS",tg_btn:"Message on Telegram",channels:"Channels",skills:"Skills",freelance:"Freelance",about:"About",contact:"Contact",
   h_reel:"SHOWREEL",h_projects:"PROJECTS",h_channels:"CHANNELS",h_skills:"SYSTEMS",h_fl:"FREELANCEHUNT",h_about:"ABOUT",h_contact:"CONTACT",
   reel_cap:"PARANORMA intro — press play to watch with sound. More work below.",
-  ch1:"Animated horror stories: urban legends, dead air and whatever stares back from the dark.",ch2:"TV series and films through colored lenses — personal reviews.",
+  ch1:"Animated horror stories: urban legends, dead air and whatever stares back from the dark.",ch2:"Film and TV-series reviews plus colored contact lenses — an author channel with bold thumbnails.",
   fl_btn:"Open profile & portfolio ↗",
   about1:"I make videos you want to finish: animated stories, motion graphics and 3D — and where it pays off, I plug in neural nets and build my own pipelines.",
   about2:"I write the stories, storyboard, voice and sound, animate and edit. One person, a whole studio: from idea to finished video.",
   st1:"works in portfolio",st2:"YouTube channels",st3:"languages: RU / EN",
   f_name:"Name",f_msg:"Brief",f_send:"Send signal ▸",f_note:"Your mail app will open with a ready-made message.",
-  watch:"WATCH",fl:["3D particle animation","Motion animation + sound effects","Editing & effects","Skin retouching in video","Face censoring across a whole video","Photo editing in Photoshop + image animation","Deepfake / lip-sync","Subtitle & logo animation","Video cleanup: removing logos and text","Editing for YouTube channels","Parallax animation","Stock-footage cuts for ad creatives","Photoshop life-hacks: editing & screen recording"],
+  watch:"WATCH",fl:["3D particle animation","Motion animation + sound effects","Editing & effects","Skin retouching in video","Face censoring across a whole video","Photo editing in Photoshop + image animation","Deepfake / lip-sync","Subtitle & logo animation","Video cleanup: removing logos and text","Editing for YouTube channels","Parallax animation","Stock-footage cuts for ad creatives","Photoshop life-hacks: editing & screen recording","YouTube thumbnail design","Infographics / product cards for marketplaces"],
   flhead:"FREELANCEHUNT PROFILE",flnote:"# full work list and reviews are on the profile page"}
 };

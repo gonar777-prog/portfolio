@@ -38,7 +38,7 @@ def main():
     ap.add_argument("image")
     ap.add_argument("--id", required=True)
     ap.add_argument("--ch", default="paranorma", choices=["paranorma", "gonar"])
-    ap.add_argument("--type", default="thumb", choices=["logo", "banner", "thumb", "char"])
+    ap.add_argument("--type", default="thumb", choices=["logo", "banner", "thumb", "char", "art", "card"])
     ap.add_argument("--title", default="")
     a = ap.parse_args()
     if not re.fullmatch(r"[A-Za-z0-9_]+", a.id):
