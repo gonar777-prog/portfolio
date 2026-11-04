@@ -5,21 +5,45 @@ const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const touch=matchMedia('(hover:none)').matches;
 let lang='ru'; try{lang=localStorage.getItem('lang')||(navigator.language||'').startsWith('en')&&'en'||'ru'}catch(e){}
 let sound=false, actx=null;
+/* ---------- background music ---------- */
+const VOL=.22, VOL_DUCK=.05;
+let pref='on'; try{pref=localStorage.getItem('music')||'on'}catch(e){}
+const bgm=new Audio('assets/audio/bgm.mp3'); bgm.loop=true; bgm.preload='auto'; bgm.volume=0;
+window.__bgm=bgm; let musicOn=false, started=false, fadeT=null, target=0;
+function setBtn(){ const b=$('#sndBtn'); b.classList.toggle('on',musicOn); b.setAttribute('aria-pressed',musicOn); $('#sndState').textContent=musicOn?'ON':'OFF'; sound=musicOn; }
+function fadeTo(v,ms){ clearInterval(fadeT); const from=bgm.volume,t0=performance.now(); target=v;
+  fadeT=setInterval(()=>{const k=Math.min(1,(performance.now()-t0)/ms); bgm.volume=Math.max(0,Math.min(1,from+(v-from)*k)); if(k>=1){clearInterval(fadeT); if(v===0&&!musicOn)bgm.pause();}},50); }
+function desired(){ return !musicOn?0:(isDucked()?VOL_DUCK:VOL); }
+function isDucked(){ const m=document.getElementById('modal'); const rvp=document.getElementById('reelVideo'); return (m&&!m.hidden)||(rvp&&!rvp.paused&&!rvp.muted); }
+function applyDuck(){ if(started&&musicOn&&!document.hidden) fadeTo(desired(),600); }
+async function startMusic(fadeMs=2500){
+  if(pref==='off'||musicOn&&started&&!bgm.paused) return;
+  try{ await bgm.play(); started=true; musicOn=true; setBtn(); fadeTo(desired(),fadeMs); }catch(e){ /* blocked until a gesture */ }
+}
+function toggleMusic(){
+  if(musicOn){ musicOn=false; pref='off'; try{localStorage.setItem('music','off')}catch(e){} setBtn(); fadeTo(0,500); }
+  else{ musicOn=true; pref='on'; try{localStorage.setItem('music','on')}catch(e){} setBtn(); bgm.play().then(()=>{started=true;fadeTo(desired(),1200)}).catch(()=>{}); }
+}
+$('#sndBtn').onclick=()=>{toggleMusic(); blip(880,.12,'sawtooth',.05)};
+document.addEventListener('visibilitychange',()=>{ if(document.hidden){ if(!bgm.paused)bgm.pause(); } else if(started&&musicOn){ bgm.play().catch(()=>{}); fadeTo(desired(),1200);} });
+/* fallback: first gesture anywhere starts music if it has not started yet */
+['pointerdown','keydown','touchstart','wheel'].forEach(ev=>addEventListener(ev,function f(){ if(!started&&pref!=='off'&&bootDone){ startMusic(); } if(started) removeEventListener(ev,f); },{passive:true}));
+if(pref==='off') setBtn();
+else bgm.play().then(()=>{started=true;musicOn=true;setBtn();fadeTo(VOL,2500)}).catch(()=>{}); /* try autoplay first */
 
-/* ---------- sound (WebAudio synth, off by default) ---------- */
 function blip(f=660,d=.06,type='square',v=.03){
   if(!sound) return;
   try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)();
     const o=actx.createOscillator(),g=actx.createGain(); o.type=type;o.frequency.value=f;
-    g.gain.setValueAtTime(v,actx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,actx.currentTime+d);
+    g.gain.setValueAtTime(v*.6,actx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,actx.currentTime+d);
     o.connect(g).connect(actx.destination);o.start();o.stop(actx.currentTime+d);}catch(e){}
 }
-$('#sndBtn').onclick=e=>{sound=!sound;e.currentTarget.setAttribute('aria-pressed',sound);$('#sndState').textContent=sound?'ON':'OFF';blip(880,.12,'sawtooth',.05)};
 
 /* ---------- i18n ---------- */
 function applyLang(){
   const T=I18N[lang]; document.documentElement.lang=lang;
   $$('[data-i]').forEach(el=>{const k=el.dataset.i; if(T[k]!==undefined){el.textContent=T[k]; if(el.dataset.text!==undefined) el.dataset.text=T[k];}});
+  const be=$('#bootEnter span'); if(be) be.textContent=lang==='ru'?'ВОЙТИ В СИСТЕМУ':'ENTER SYSTEM';
   const sp=$$('#langBtn span'); sp[0].className=lang==='ru'?'on':''; sp[1].className=lang==='en'?'on':'';
   buildFilters(); buildGrid(); buildFl(); buildGFilters(); buildGallery();
   try{localStorage.setItem('lang',lang)}catch(e){}
@@ -29,19 +53,20 @@ $('#langBtn').onclick=()=>{lang=lang==='ru'?'en':'ru'; applyLang(); glitchScreen
 /* ---------- boot ---------- */
 const bootLines=['> GONAR.OS v2.6 // BOOT SEQUENCE','> checking memory ........ [ OK ]','> mounting /deep-field/01 .. [ OK ]','> loading holo-renderer ... [ OK ]','> calibrating star-field .. [ OK ]','> linking channels: PARANORMA, GONAR FORCE','> signal locked.','> WELCOME, OPERATOR_'];
 let bootDone=false;
-function endBoot(){ if(bootDone)return; bootDone=true; $('#boot').classList.add('out'); document.body.classList.remove('booting'); setTimeout(()=>$('#boot').remove(),700); heroIn(); }
+function endBoot(){ if(bootDone)return; bootDone=true; startMusic(2500); $('#boot').classList.add('out'); document.body.classList.remove('booting'); setTimeout(()=>$('#boot').remove(),700); heroIn(); }
 (function boot(){
   const log=$('#bootLog'),fill=$('#bootFill'); let i=0,c=0;
   if(reduce){ log.textContent=bootLines.join('\n'); fill.style.width='100%'; setTimeout(endBoot,300); return; }
   (function tick(){
     if(bootDone) return;
-    if(i>=bootLines.length){ setTimeout(endBoot,350); return; }
+    if(i>=bootLines.length){ showEnter(); return; }
     const L=bootLines[i]; c+=2; log.textContent=bootLines.slice(0,i).join('\n')+(i?'\n':'')+L.slice(0,c)+'█';
     if(c>=L.length){ i++; c=0; fill.style.width=(i/bootLines.length*100)+'%'; blip(300+i*70,.04); setTimeout(tick,110);} else setTimeout(tick,14);
   })();
 })();
-$('#bootSkip').onclick=endBoot;
-setTimeout(endBoot,9000);
+$('#bootSkip').onclick=showEnter;
+$('#bootEnter').onclick=endBoot;
+function showEnter(){ if(bootDone)return; $('#bootFill').style.width='100%'; $('#bootSkip').hidden=true; $('#bootEnter').hidden=false; $('#bootEnter').focus(); }
 function heroIn(){ $$('#hero .glitch').forEach(g=>g.classList.add('g')); setTimeout(()=>$$('#hero .glitch').forEach(g=>g.classList.remove('g')),800); }
 
 /* ---------- screen glitch ---------- */
@@ -126,7 +151,7 @@ function observe(){
 const rv=$('#reelVideo'), rf=$('#reelFrame');
 $('#reelPlay').onclick=()=>{ if(!rv.src)rv.src=rv.dataset.src; rv.muted=false; rv.loop=false; rv.controls=true; rv.play().catch(()=>{rv.muted=true;rv.play()}); rf.classList.add('playing'); blip(900,.1); };
 rv.addEventListener('timeupdate',()=>{const t=rv.currentTime|0;$('#reelTime').textContent=String(t/60|0).padStart(2,'0')+':'+String(t%60).padStart(2,'0')});
-rv.addEventListener('ended',()=>{rf.classList.remove('playing');rv.controls=false});
+['play','pause','volumechange'].forEach(e=>rv.addEventListener(e,applyDuck)); rv.addEventListener('ended',()=>{rf.classList.remove('playing');rv.controls=false});
 new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting&&!rv.paused)rv.pause()}),{threshold:.1}).observe(rf);
 
 /* ---------- modal ---------- */
@@ -140,10 +165,10 @@ function openModal(id){
   const forms=[{id:id,label:'16:9',ar:p.variants?(p.ar||1.778):(p.ar||1.778)}].concat(p.variants||[]);
   if(forms.length>1){ forms.forEach((f,i)=>{const b=document.createElement('button');b.className='chip';b.textContent=f.label;b.onclick=()=>{setFmt(p,f.id,f.ar,b);blip(800,.05)};fm.append(b)}); }
   $('#mTitle').textContent=t[0]; $('#mDesc').textContent=t[1]; $('#mMeta').textContent=catName(p.cat).toUpperCase()+' / '+p.year;
-  modal.hidden=false; document.body.style.overflow='hidden'; blip(700,.1,'sawtooth'); history.replaceState(null,'','#'+id);
+  modal.hidden=false; document.body.style.overflow='hidden'; applyDuck(); blip(700,.1,'sawtooth'); history.replaceState(null,'','#'+id);
   setFmt(p,id,p.ar||1.778,fm.firstChild);
 }
-function closeModal(){ mv.pause(); mv.removeAttribute('src'); mv.load(); modal.hidden=true; document.body.style.overflow=''; blip(400,.08); history.replaceState(null,'','#projects'); }
+function closeModal(){ mv.pause(); mv.removeAttribute('src'); mv.load(); modal.hidden=true; document.body.style.overflow=''; applyDuck(); blip(400,.08); history.replaceState(null,'','#projects'); }
 $('#mClose').onclick=closeModal; modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeModal()});
 
