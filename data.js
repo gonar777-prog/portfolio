@@ -30,6 +30,11 @@ window.PROJECTS = [
  {id:"lipsync1", cat:"ai", year:2026, ar:1.778, ru:["Липсинк и субтитры · Репортаж","Герои репортажа с анимированными плашками и субтитрами. Демонстрация липсинка и анимации титров."], en:["Lip-sync & Captions · Report","Report characters with animated lower-thirds and subtitles. A demo of lip-sync and title animation."]},
  {id:"lipsync2", cat:"ai", year:2026, ar:1.0, ru:["Липсинк и субтитры · Интервью","Квадратное интервью с анимированными титрами. Тест синхронизации губ и работы с субтитрами."], en:["Lip-sync & Captions · Interview","A square-format interview with animated titles. A lip-sync and subtitle-work test."]},
  {id:"ps_lifehack", cat:"ps", year:2026, ar:0.562, ru:["Photoshop · Лайфхак","Вертикальный обучающий ролик: запись экрана Photoshop, вырезание объекта и аккуратный монтаж."], en:["Photoshop · Life-hack","A vertical tutorial: Photoshop screen capture, cutting out a subject and clean editing."]},
+ {id:"paranorma_clip", cat:"anim", variants:[{id:"paranorma_clip_916",label:"9:16",ar:0.562}], year:2026, ar:1.778, ru:["PARANORMA · Открывающий кадр","Охотница с камерой, призрачный свет над кладбищем и слизистый логотип."], en:["PARANORMA · Opening Shot","A camera-wielding hunter, ghostly light over a graveyard and a slime logo."]},
+ {id:"alien", cat:"anim", year:2026, ar:0.527, ru:["Пришелец · Анимация","Вертикальный ролик: пришелец в костюме оживает на тёмном фоне."], en:["Alien · Animation","A vertical clip: an alien in a suit comes to life against a dark backdrop."]},
+ {id:"gf_intro", cat:"motion", year:2026, ar:1.778, ru:["GONAR FORCE · Заставка","3D-титры, огненные вспышки и кадры с цветными линзами."], en:["GONAR FORCE · Intro","3D titles, fire flashes and colored-lens footage."]},
+ {id:"cat_car", cat:"motion", year:2026, ar:1.778, ru:["Кот в машине","Весёлый ролик: кот высовывается из кабриолета на скорости."], en:["Cat in a Car","A fun clip: a cat leans out of a car at speed."]},
+ {id:"comic_subs", cat:"edit", year:2026, ar:0.562, ru:["Комикс-панели · Субтитры","Вертикальный монтаж с комикс-рамками и зелёными субтитрами."], en:["Comic Panels · Subtitles","A vertical edit with comic frames and green subtitles."]},
  // @@PROJECTS_END@@
 ];
 window.CATS = {all:["Все","All"], anim:["Анимация","Animation"], motion:["Моушн","Motion"], edit:["Монтаж","Editing"], "3d":["3D","3D"], ai:["AI","AI"], clip:["Клипы","Clips"], ps:["Photoshop","Photoshop"], ad:["Реклама","Ads"]};
@@ -71,9 +76,31 @@ window.GALLERY = [
  {id:"card_bag2", ch:"gonar", type:"card", ar:0.75, title:"Карточка товара · вместительный рюкзак"},
  {id:"card_bag3", ch:"gonar", type:"card", ar:0.75, title:"Карточка товара · трансформер 70 см"},
  {id:"gf_darkmaterials", ch:"gonar", type:"thumb", ar:1.778, title:"Тёмные начала · обзор"},
+ {id:"th_firefly", ch:"gonar", type:"thumb", ar:1.778, title:"Превью · Firefly AI", en:"Thumbnail · Firefly AI"},
+ {id:"th_archaeology", ch:"gonar", type:"thumb", ar:1.778, title:"Превью · 10 археологических открытий", en:"Thumbnail · 10 Archaeological Discoveries"},
+ {id:"th_missing39", ch:"paranorma", type:"thumb", ar:1.778, title:"Превью PARANORMA · «Он пропал 39 лет назад»", en:"PARANORMA thumbnail · “Missing for 39 Years”"},
+ {id:"art_yoda", ch:"gonar", type:"art", ar:1.0, title:"Вырезка · Йода с собакой", en:"Cutout · Yoda with a Dog"},
+ {id:"chaos_cover", ch:"gonar", type:"art", ar:1.778, title:"Заставка · «Хаос реальности»", en:"Cover · “Chaos Reality”"},
+ {id:"inbox_light", ch:"gonar", type:"promo", ar:2.996, title:"Баннер INBOX · светлый", en:"INBOX banner · light"},
+ {id:"inbox_dark", ch:"gonar", type:"promo", ar:2.996, title:"Баннер INBOX · тёмный", en:"INBOX banner · dark"},
+ {id:"inbox_mail", ch:"gonar", type:"promo", ar:2.996, title:"Баннер INBOX · конверт", en:"INBOX banner · envelope"},
+ {id:"chaos_3d", ch:"gonar", type:"art", ar:1.778, title:"3D-кадр · ванная и зеркало", en:"3D frame · bathroom mirror"},
+ {id:"chaos_chars", ch:"gonar", type:"char", ar:1.5, title:"Лист персонажей · Хаос реальности", en:"Character sheet · Chaos Reality"},
+ {id:"art_space", ch:"gonar", type:"art", ar:1.538, title:"Арт · космические солдаты", en:"Art · Space Soldiers"},
+ {id:"art_redmoon", ch:"gonar", type:"art", ar:1.333, title:"Фотоманипуляция · красная луна", en:"Photo manipulation · Red Moon"},
+ {id:"th_sd1", ch:"gonar", type:"thumb", ar:1.869, title:"Превью · Stable Diffusion: вход → выход", en:"Thumbnail · Stable Diffusion: input → output"},
+ {id:"th_sd2", ch:"gonar", type:"thumb", ar:1.869, title:"Превью · Stable Diffusion", en:"Thumbnail · Stable Diffusion"},
+ {id:"th_facetracking", ch:"gonar", type:"thumb", ar:1.778, title:"Урок · Face Tracking", en:"Lesson · Face Tracking"},
+ {id:"th_skater", ch:"gonar", type:"thumb", ar:1.778, title:"Превью · скейтер с осколками", en:"Thumbnail · Skater with Shards"},
+ {id:"th_facetools", ch:"gonar", type:"thumb", ar:1.778, title:"Урок · 3D-анимация лица (Face Tools)", en:"Lesson · 3D Face Animation (Face Tools)"},
+ {id:"th_topaz", ch:"gonar", type:"thumb", ar:1.778, title:"Урок · Topaz «вот как нужно»", en:"Lesson · Topaz “Here’s How”"},
+ {id:"th_tiktok_ae", ch:"gonar", type:"thumb", ar:1.778, title:"Урок · TikTok-эдиты в After Effects", en:"Lesson · TikTok Edits in After Effects"},
+ {id:"th_daynight", ch:"gonar", type:"thumb", ar:0.562, title:"Превью · день → ночь", en:"Thumbnail · Day to Night"},
+ {id:"th_9effects", ch:"gonar", type:"thumb", ar:1.778, title:"Урок · 9 эффектов в AE за 2 минуты", en:"Lesson · 9 AE Effects in 2 Minutes"},
+ {id:"th_yasmina", ch:"gonar", type:"thumb", ar:1.778, title:"Обложка · клиентская «Программа Ясмины»", en:"Cover · client work “Yasmina’s Program”"},
  // @@GALLERY_END@@
 ];
-window.GCATS = {all:["Все","All"], paranorma:["PARANORMA","PARANORMA"], gonar:["GONAR FORCE","GONAR FORCE"], logo:["Логотипы","Logos"], banner:["Шапки","Banners"], thumb:["Превью","Thumbnails"], art:["Photoshop-арты","Photoshop Art"], card:["Дизайн карточек","Card Design"], char:["Персонажи","Characters"]};
+window.GCATS = {all:["Все","All"], paranorma:["PARANORMA","PARANORMA"], gonar:["GONAR FORCE","GONAR FORCE"], logo:["Логотипы","Logos"], banner:["Шапки","Banners"], thumb:["Превью YouTube","YouTube Thumbnails"], promo:["Баннеры","Banners"], art:["Photoshop-арты","Photoshop Art"], card:["Дизайн карточек","Card Design"], char:["Персонажи","Characters"]};
 window.SKILLS = [
  ["After Effects","motion / compositing"],["Photoshop","retouch / key art"],["Дизайн превью","thumbnails / cards"],["Premiere Pro","editing / color / sound"],["Blender","3D / EEVEE / procedural"],["Remotion","video in code"],
  ["ComfyUI","local AI pipelines"],["ElevenLabs","voice / v3"],["Whisper","timing / subtitles"],

@@ -175,19 +175,19 @@ addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeModal()})
 
 /* ---------- gallery ---------- */
 let gf='all', gList=[];
-const gName=g=>g.title;
+const gName=g=>(lang==='en'&&g.en)||g.title;
 function buildGFilters(){ const f=$('#gFilters'); f.innerHTML='';
   Object.keys(GCATS).forEach(k=>{const b=document.createElement('button');b.className='chip'+(k===gf?' act':'');b.textContent=GCATS[k][lang==='ru'?0:1];b.onclick=()=>{gf=k;blip(700,.05);buildGFilters();buildGallery()};f.append(b)}); }
 function buildGallery(){
   const g=$('#gal'); g.innerHTML='';
   gList=GALLERY.filter(x=>gf==='all'||x.ch===gf||x.type===gf);
   gList.forEach((x,i)=>{ const f=document.createElement('figure'); f.className='gi tilt reveal '+x.type;
-    f.innerHTML=`<img src="assets/img/t_${x.id}.webp" alt="${x.title}" loading="lazy" width="600" height="${Math.round(600/x.ar)}"><figcaption><small>${x.ch==='gonar'?'GONAR FORCE':'PARANORMA'} / ${x.type.toUpperCase()}</small>${x.title}</figcaption>`;
+    f.innerHTML=`<img src="assets/img/t_${x.id}.webp" alt="${gName(x)}" loading="lazy" width="600" height="${Math.round(600/x.ar)}"><figcaption><small>${x.ch==='gonar'?'GONAR FORCE':'PARANORMA'} / ${x.type.toUpperCase()}</small>${gName(x)}</figcaption>`;
     f.tabIndex=0; f.onclick=()=>openLb(i); f.onkeydown=e=>{if(e.key==='Enter')openLb(i)}; g.append(f); });
   bindTilt(); observe();
 }
 let lbI=0; const lb=$('#lb');
-function showLb(){ const x=gList[lbI]; $('#lbImg').src='assets/img/'+x.id+'.webp'; $('#lbCap').textContent=x.title; }
+function showLb(){ const x=gList[lbI]; $('#lbImg').src='assets/img/'+x.id+'.webp'; $('#lbCap').textContent=gName(x); }
 function openLb(i){ lbI=i; showLb(); lb.hidden=false; document.body.style.overflow='hidden'; blip(700,.08); }
 function closeLb(){ lb.hidden=true; document.body.style.overflow=''; }
 $('#lbClose').onclick=closeLb; lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});

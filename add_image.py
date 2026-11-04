@@ -38,8 +38,9 @@ def main():
     ap.add_argument("image")
     ap.add_argument("--id", required=True)
     ap.add_argument("--ch", default="paranorma", choices=["paranorma", "gonar"])
-    ap.add_argument("--type", default="thumb", choices=["logo", "banner", "thumb", "char", "art", "card"])
+    ap.add_argument("--type", default="thumb", choices=["logo", "banner", "thumb", "char", "art", "card", "promo"])
     ap.add_argument("--title", default="")
+    ap.add_argument("--en", default="", help="английская подпись (необязательно)")
     a = ap.parse_args()
     if not re.fullmatch(r"[A-Za-z0-9_]+", a.id):
         sys.exit("--id: только латиница, цифры и _")
@@ -48,7 +49,8 @@ def main():
     ff(a.image, os.path.join(IMG, "t_" + a.id + ".webp"), 600, 78)
     w, h = probe(os.path.join(IMG, a.id + ".webp"))
     txt = open(DATA, encoding="utf-8").read()
-    entry = ' {id:"%s", ch:"%s", type:"%s", ar:%s, title:%s},\n' % (a.id, a.ch, a.type, round(w / h, 3), js(a.title or a.id))
+    entry = ' {id:"%s", ch:"%s", type:"%s", ar:%s, title:%s%s},
+' % (a.id, a.ch, a.type, round(w / h, 3), js(a.title or a.id), (", en:" + js(a.en)) if a.en else "")
     txt = re.sub(r"\}\s*\n(\s*// @@GALLERY_END@@)", "},\n\\1", txt, count=1)
     txt = txt.replace(" // @@GALLERY_END@@", entry + " // @@GALLERY_END@@", 1)
     open(DATA, "w", encoding="utf-8").write(txt)

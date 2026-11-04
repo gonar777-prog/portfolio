@@ -22,6 +22,11 @@ GONAR PORTFOLIO — космический киберпанк сайт (HTML+CSS
   Ducking до 0.05 при открытом модальном плеере/showreel со звуком; пауза при скрытой вкладке.
   Заменить музыку: положить новый mp3 в assets/audio/bgm.mp3.
 
+КАТЕГОРИИ
+  Проекты (--cat): anim Анимация, motion Моушн, edit Монтаж, 3d 3D, ai AI, ps Photoshop, ad Реклама, clip Клипы.
+  Галерея (--type): logo Логотипы, banner Шапки, thumb Превью YouTube, promo Баннеры, art Photoshop-арты,
+  card Дизайн карточек, char Персонажи; --ch paranorma|gonar. Подпись EN: --en "...".
+
 ДОБАВЛЕНИЕ РАБОТ (одной командой)
   Видео-проект:
     python add_project.py "D:\путь\ролик.mp4" --id moy_rolik --cat motion --ru "Название|Описание" --en "Title|Teaser"
