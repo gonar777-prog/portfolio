@@ -35,9 +35,15 @@ window.PROJECTS = [
  {id:"gf_intro", cat:"motion", year:2026, ar:1.778, ru:["GONAR FORCE · Заставка","3D-титры, огненные вспышки и кадры с цветными линзами."], en:["GONAR FORCE · Intro","3D titles, fire flashes and colored-lens footage."]},
  {id:"cat_car", cat:"motion", year:2026, ar:1.778, ru:["Кот в машине","Весёлый ролик: кот высовывается из кабриолета на скорости."], en:["Cat in a Car","A fun clip: a cat leans out of a car at speed."]},
  {id:"comic_subs", cat:"edit", year:2026, ar:0.562, ru:["Комикс-панели · Субтитры","Вертикальный монтаж с комикс-рамками и зелёными субтитрами."], en:["Comic Panels · Subtitles","A vertical edit with comic frames and green subtitles."]},
+ {id:"news_kirovohrad", cat:"news", year:2026, ar:0.562, ru:["Новости · Кировоградщина","Выпуск о ночной атаке дронов: кадры пожара и титры."], en:["News · Kirovohrad Region","A report on an overnight drone attack: fire footage and titles."]},
+ {id:"news_starshield", cat:"news", year:2026, ar:0.562, ru:["Новости · Starshield","Заметка о Starshield: фото устройства и цитата в титрах."], en:["News · Starshield","A piece on Starshield: a photo of the device and a quote in the titles."]},
+ {id:"news_g7", cat:"news", year:2026, ar:0.562, ru:["Новости · Арка ЧАЭС","Выпуск о финансировании ремонта арки ЧАЭС: ночные кадры и титры."], en:["News · Chornobyl Arch","A report on funding the Chornobyl arch repair: night footage and titles."]},
+ {id:"news_victims", cat:"news", year:2026, ar:0.562, ru:["Новости · Данные ООН","Выпуск о пострадавших гражданских: цифра на экране и кадры пожара."], en:["News · UN Data","A report on civilian casualties: a figure on screen and fire footage."]},
+ {id:"news_sumy", cat:"news", year:2026, ar:0.562, ru:["Новости · Сумы","Выпуск о попадании дрона в торговый центр: кадры работы спасателей."], en:["News · Sumy","A report on a drone hit on a shopping center: rescue-crew footage."]},
+ {id:"news_energy", cat:"news", year:2026, ar:0.562, ru:["Новости · Энергетика","Выпуск о ночной атаке на энергетику: счётчики и титры."], en:["News · Energy","A report on an overnight attack on energy sites: counters and titles."]},
  // @@PROJECTS_END@@
 ];
-window.CATS = {all:["Все","All"], anim:["Анимация","Animation"], motion:["Моушн","Motion"], edit:["Монтаж","Editing"], "3d":["3D","3D"], ai:["AI","AI"], clip:["Клипы","Clips"], ps:["Photoshop","Photoshop"], ad:["Реклама","Ads"]};
+window.CATS = {all:["Все","All"], anim:["Анимация","Animation"], motion:["Моушн","Motion"], edit:["Монтаж","Editing"], "3d":["3D","3D"], ai:["AI","AI"], clip:["Клипы","Clips"], ps:["Photoshop","Photoshop"], ad:["Реклама","Ads"], news:["Новости","News"]};
 window.GALLERY = [
  {id:"shapka_kanala", ch:"paranorma", type:"banner", ar:1.79, title:"Шапка канала · зелёный трамвай"},
  {id:"shapka_3d", ch:"paranorma", type:"banner", ar:1.792, title:"Шапка · 3D-надпись"},
