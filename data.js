@@ -84,7 +84,6 @@ window.GALLERY = [
  {id:"inbox_light", ch:"gonar", type:"promo", ar:2.996, title:"Баннер INBOX · светлый", en:"INBOX banner · light"},
  {id:"inbox_dark", ch:"gonar", type:"promo", ar:2.996, title:"Баннер INBOX · тёмный", en:"INBOX banner · dark"},
  {id:"inbox_mail", ch:"gonar", type:"promo", ar:2.996, title:"Баннер INBOX · конверт", en:"INBOX banner · envelope"},
- {id:"chaos_3d", ch:"gonar", type:"art", ar:1.778, title:"3D-кадр · ванная и зеркало", en:"3D frame · bathroom mirror"},
  {id:"chaos_chars", ch:"gonar", type:"char", ar:1.5, title:"Лист персонажей · Хаос реальности", en:"Character sheet · Chaos Reality"},
  {id:"art_space", ch:"gonar", type:"art", ar:1.538, title:"Арт · космические солдаты", en:"Art · Space Soldiers"},
  {id:"art_redmoon", ch:"gonar", type:"art", ar:1.333, title:"Фотоманипуляция · красная луна", en:"Photo manipulation · Red Moon"},
