@@ -45,6 +45,8 @@ function applyLang(){
   $$('[data-i]').forEach(el=>{const k=el.dataset.i; if(T[k]!==undefined){el.textContent=T[k]; if(el.dataset.text!==undefined) el.dataset.text=T[k];}});
   const be=$('#bootEnter span'); if(be) be.textContent=lang==='ru'?'ВОЙТИ В СИСТЕМУ':'ENTER SYSTEM';
   const sp=$$('#langBtn span'); sp[0].className=lang==='ru'?'on':''; sp[1].className=lang==='en'?'on':'';
+  $$('[data-pdf]').forEach(el=>{const f='GONAR_Portfolio_'+(lang==='ru'?'RU':'EN')+'.pdf'; el.href='assets/docs/'+f; el.setAttribute('download',f);});
+  $('#expFields').innerHTML=T.expf.map(x=>'<div class="holo-mini">'+x+'</div>').join(''); $('#apprList').innerHTML=T.appr.map(x=>'<li>'+x+'</li>').join('');
   buildFilters(); buildGrid(); buildFl(); buildGFilters(); buildGallery();
   try{localStorage.setItem('lang',lang)}catch(e){}
 }

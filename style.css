@@ -254,3 +254,21 @@ body.shake main{animation:shake .28s steps(3)}
 #bootEnter{align-self:flex-start;font-size:16px;padding:18px 36px;animation:enterPulse 1.6s infinite}
 #bootEnter[hidden],#bootSkip[hidden]{display:none}
 @keyframes enterPulse{50%{box-shadow:0 0 30px var(--cyan),0 0 80px rgba(192,64,255,.6)}}
+
+/* experience */
+.exp{display:grid;grid-template-columns:1fr 1.4fr 1.2fr;gap:22px;margin-top:46px}
+.exp-head,.exp-appr{padding:26px}
+.exp-head .years{display:block;font-size:clamp(64px,8vw,110px);font-weight:900;font-style:italic;line-height:1;color:var(--cyan);text-shadow:var(--glow)}
+.exp-head>span{font:12px var(--m);letter-spacing:.25em;color:var(--mag);text-transform:uppercase}
+.exp-head p{margin:14px 0;color:#bfe3f2}
+.toolchips{display:flex;flex-wrap:wrap;gap:8px}.toolchips span{font:11px var(--m);letter-spacing:.1em;padding:5px 10px;border:1px solid rgba(34,230,255,.4);color:var(--cyan2);background:rgba(34,230,255,.07)}
+.exp-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start}
+.holo-mini{position:relative;padding:16px 14px;border:1px solid rgba(192,64,255,.4);background:linear-gradient(135deg,rgba(122,60,255,.16),rgba(8,16,40,.6));font-weight:600;overflow:hidden;transition:.3s}
+.holo-mini::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(34,230,255,.18) 50%,transparent 65%);transform:translateX(-120%);transition:transform .8s}
+.holo-mini:hover{border-color:var(--cyan);box-shadow:0 0 22px rgba(34,230,255,.3)}.holo-mini:hover::after{transform:translateX(120%)}
+.exp-appr small{font:11px var(--m);letter-spacing:.25em;color:var(--mag)}
+.exp-appr ul{list-style:none;margin:12px 0 18px;display:grid;gap:10px}
+.exp-appr li{padding-left:18px;position:relative;color:#bfe3f2;font-size:16px}.exp-appr li::before{content:"▸";position:absolute;left:0;color:var(--cyan)}
+.pdfbtn{text-align:center}.links .pdfbtn{align-self:flex-start;font-size:14px;padding:14px 24px;color:var(--cyan2)}.links .pdfbtn:hover{padding-left:24px;color:var(--pink)}
+@media(max-width:1100px){.exp{grid-template-columns:1fr}}
+@media(max-width:600px){.exp-fields{grid-template-columns:1fr}}

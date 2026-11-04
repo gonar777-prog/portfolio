@@ -22,6 +22,10 @@ GONAR PORTFOLIO — космический киберпанк сайт (HTML+CSS
   Ducking до 0.05 при открытом модальном плеере/showreel со звуком; пауза при скрытой вкладке.
   Заменить музыку: положить новый mp3 в assets/audio/bgm.mp3.
 
+PDF-ПОРТФОЛИО
+  assets/docs/GONAR_Portfolio_RU.pdf и _EN.pdf (копии из D:\Claude\portfolio_pro). Кнопки скачивания - в hero, "Обо мне", "Контакты";
+  язык берётся по переключателю RU/EN. Блок ОПЫТ - в "Обо мне" (тексты в data.js: exp_*, expf, appr).
+
 КАТЕГОРИИ
   Проекты (--cat): anim Анимация, motion Моушн, edit Монтаж, 3d 3D, ai AI, ps Photoshop, ad Реклама, clip Клипы.
   Галерея (--type): logo Логотипы, banner Шапки, thumb Превью YouTube, promo Баннеры, art Photoshop-арты,

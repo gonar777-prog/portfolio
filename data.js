@@ -41,6 +41,7 @@ window.PROJECTS = [
  {id:"news_victims", cat:"news", year:2026, ar:0.562, ru:["Новости · Данные ООН","Выпуск о пострадавших гражданских: цифра на экране и кадры пожара."], en:["News · UN Data","A report on civilian casualties: a figure on screen and fire footage."]},
  {id:"news_sumy", cat:"news", year:2026, ar:0.562, ru:["Новости · Сумы","Выпуск о попадании дрона в торговый центр: кадры работы спасателей."], en:["News · Sumy","A report on a drone hit on a shopping center: rescue-crew footage."]},
  {id:"news_energy", cat:"news", year:2026, ar:0.562, ru:["Новости · Энергетика","Выпуск о ночной атаке на энергетику: счётчики и титры."], en:["News · Energy","A report on an overnight attack on energy sites: counters and titles."]},
+ {id:"mebel_kvartira", cat:"edit", year:2026, ar:0.562, ru:["Мебель и квартира · Проект","В пустой квартире на стадии ремонта появляются мебель и интерьер: визуализация будущего вида."], en:["Furniture & Apartment · Project","Furniture and interior appear in a bare apartment under renovation: a preview of the finished look."]},
  // @@PROJECTS_END@@
 ];
 window.CATS = {all:["Все","All"], anim:["Анимация","Animation"], motion:["Моушн","Motion"], edit:["Монтаж","Editing"], "3d":["3D","3D"], ai:["AI","AI"], clip:["Клипы","Clips"], ps:["Photoshop","Photoshop"], ad:["Реклама","Ads"], news:["Новости","News"]};
@@ -112,7 +113,7 @@ window.SKILLS = [
  ["FFmpeg","encode / QC"],["Python","automation"],["Sound design","music / SFX / mix"],["Storyboard","script / pacing"]
 ];
 window.I18N = {
- ru:{hero_kicker:"ДОБРО ПОЖАЛОВАТЬ В НОВУЮ ВСЕЛЕННУЮ",hero_lead:"Твои идеи. Моя реализация. Визуал, который невозможно игнорировать.",cta1:"Смотреть проекты",cta2:"Заказать видео",scroll:"СКРОЛЛ ↓",
+ ru:{pdf_btn:"Скачать портфолио (PDF)",exp_years:"лет в дизайне",exp_lead:"Работал в дизайнерских фирмах и студиях над очень разными тематиками.",appr_h:"ПОДХОД",expf:["Новостные и соцмедиа-каналы","Реклама и креативы","YouTube-каналы и превью","Мебель и интерьер","E-commerce инфографика","3D и AI-анимация","Анимационные истории"],appr:["Идея → раскадровка → звук → монтаж: весь цикл у одного человека.","Нейросети — там, где они экономят время; ритм, вкус и звук — вручную.","Чистый кадр и читаемый текст: без лишнего шума ради шума.","Звук с запасом по громкости: пик не выше −6 dB."],hero_kicker:"ДОБРО ПОЖАЛОВАТЬ В НОВУЮ ВСЕЛЕННУЮ",hero_lead:"Твои идеи. Моя реализация. Визуал, который невозможно игнорировать.",cta1:"Смотреть проекты",cta2:"Заказать видео",scroll:"СКРОЛЛ ↓",
   reel:"Showreel",projects:"Проекты",gallery:"Визуал",h_gallery:"ВИЗУАЛ",tg_btn:"Написать в Telegram",channels:"Каналы",skills:"Навыки",freelance:"Freelance",about:"Обо мне",contact:"Контакты",
   h_reel:"SHOWREEL",h_projects:"ПРОЕКТЫ",h_channels:"КАНАЛЫ",h_skills:"НАВЫКИ",h_fl:"FREELANCEHUNT",h_about:"ОБО МНЕ",h_contact:"КОНТАКТЫ",
   reel_cap:"Интро PARANORMA — нажми, чтобы смотреть со звуком. Остальные работы ниже.",
@@ -124,7 +125,7 @@ window.I18N = {
   f_name:"Имя",f_msg:"Задача",f_send:"Отправить сигнал ▸",f_note:"Откроется ваша почтовая программа с готовым письмом.",
   watch:"СМОТРЕТЬ",fl:["3D Particle-анимация","Motion-анимация + звуковые эффекты","Монтаж и эффекты","Ретушь кожи на видео","Цензура лиц по всему видео","Обработка фото в Photoshop + анимация изображения","Дипфейк / липсинк","Анимация субтитров и логотипов","Редактура видео: удаление логотипов и надписей","Монтаж для YouTube-каналов","Параллакс-анимация","Нарезка стока для крео-рекламы","Photoshop-лайфхаки: монтаж и запись","Дизайн превью для YouTube","Инфографика / карточки товаров для маркетплейсов"],
   flhead:"ПРОФИЛЬ НА FREELANCEHUNT",flnote:"# полный список работ и отзывы — на странице профиля"},
- en:{hero_kicker:"WELCOME TO A NEW UNIVERSE",hero_lead:"Your ideas. My execution. Visuals impossible to ignore.",cta1:"View projects",cta2:"Order a video",scroll:"SCROLL ↓",
+ en:{pdf_btn:"Download portfolio (PDF)",exp_years:"years in design",exp_lead:"Worked at design firms and studios on very different subjects.",appr_h:"APPROACH",expf:["News & social-media channels","Advertising & creatives","YouTube channels & thumbnails","Furniture & interiors","E-commerce infographics","3D & AI animation","Animated stories"],appr:["Idea → storyboard → sound → edit: the whole cycle in one pair of hands.","Neural nets where they save time; rhythm, taste and sound by hand.","A clean frame and readable text: no noise for noise's sake.","Sound with headroom: peak never above −6 dB."],hero_kicker:"WELCOME TO A NEW UNIVERSE",hero_lead:"Your ideas. My execution. Visuals impossible to ignore.",cta1:"View projects",cta2:"Order a video",scroll:"SCROLL ↓",
   reel:"Showreel",projects:"Projects",gallery:"Visuals",h_gallery:"VISUALS",tg_btn:"Message on Telegram",channels:"Channels",skills:"Skills",freelance:"Freelance",about:"About",contact:"Contact",
   h_reel:"SHOWREEL",h_projects:"PROJECTS",h_channels:"CHANNELS",h_skills:"SYSTEMS",h_fl:"FREELANCEHUNT",h_about:"ABOUT",h_contact:"CONTACT",
   reel_cap:"PARANORMA intro — press play to watch with sound. More work below.",
