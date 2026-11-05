@@ -27,7 +27,7 @@ body.shake main{animation:shake .28s steps(3)}
 @keyframes shake{0%{transform:translateX(-4px);filter:hue-rotate(40deg)}50%{transform:translateX(5px) skewX(-1deg)}100%{transform:none}}
 
 /* cursor */
-.cursor{position:fixed;left:0;top:0;z-index:200;pointer-events:none;mix-blend-mode:screen}
+.cursor{position:fixed;left:0;top:0;z-index:400;pointer-events:none;mix-blend-mode:screen}
 .cursor i{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid var(--cyan);border-radius:50%;transition:width .2s,height .2s,margin .2s,border-color .2s;box-shadow:0 0 10px var(--cyan)}
 .cursor b{position:absolute;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;background:#fff;border-radius:50%}
 .cursor.hover i{width:64px;height:64px;margin:-32px 0 0 -32px;border-color:var(--pink)}
