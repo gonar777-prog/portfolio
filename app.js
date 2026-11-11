@@ -14,7 +14,7 @@ function setBtn(){ const b=$('#sndBtn'); b.classList.toggle('on',musicOn); b.set
 function fadeTo(v,ms){ clearInterval(fadeT); const from=bgm.volume,t0=performance.now(); target=v;
   fadeT=setInterval(()=>{const k=Math.min(1,(performance.now()-t0)/ms); bgm.volume=Math.max(0,Math.min(1,from+(v-from)*k)); if(k>=1){clearInterval(fadeT); if(v===0&&!musicOn)bgm.pause();}},50); }
 function desired(){ return !musicOn?0:(isDucked()?VOL_DUCK:VOL); }
-function isDucked(){ const m=document.getElementById('modal'); const rvp=document.getElementById('reelVideo'); return (m&&!m.hidden)||(rvp&&!rvp.paused&&!rvp.muted); }
+function isDucked(){ const m=document.getElementById('modal'); const rvp=document.getElementById('reelVideo'), vk=document.getElementById('vkVideo'); return (m&&!m.hidden)||(rvp&&!rvp.paused&&!rvp.muted)||(vk&&!vk.paused&&!vk.muted); }
 function applyDuck(){ if(started&&musicOn&&!document.hidden) fadeTo(desired(),600); }
 async function startMusic(fadeMs=2500){
   if(pref==='off'||musicOn&&started&&!bgm.paused) return;
@@ -155,6 +155,15 @@ $('#reelPlay').onclick=()=>{ if(!rv.src)rv.src=rv.dataset.src; rv.muted=false; r
 rv.addEventListener('timeupdate',()=>{const t=rv.currentTime|0;$('#reelTime').textContent=String(t/60|0).padStart(2,'0')+':'+String(t%60).padStart(2,'0')});
 ['play','pause','volumechange'].forEach(e=>rv.addEventListener(e,applyDuck)); rv.addEventListener('ended',()=>{rf.classList.remove('playing');rv.controls=false});
 new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting&&!rv.paused)rv.pause()}),{threshold:.1}).observe(rf);
+/* ---------- hero business card video (Portfolio Sylar TG) ---------- */
+const vk=$('#vkVideo'), vkB=$('#vkSnd'), vkT=$('#vkSndT');
+if(vk){
+  const setVk=()=>{ const on=!vk.muted; vkB.classList.toggle('on',on); vkB.setAttribute('aria-pressed',on); vkT.dataset.i=on?'vk_off':'vk_on'; vkT.textContent=((I18N[lang]||{})[vkT.dataset.i]||vkT.textContent); $('.vk-ico',vkB).textContent=on?'🔇':'🔊'; };
+  vkB.onclick=()=>{ if(vk.muted){ vk.currentTime=0; vk.muted=false; vk.loop=false; vk.play().catch(()=>{vk.muted=true;}); } else { vk.muted=true; vk.loop=true; vk.play().catch(()=>{}); } setVk(); applyDuck(); blip(900,.1); };
+  vk.addEventListener('ended',()=>{ vk.muted=true; vk.loop=true; vk.currentTime=0; vk.play().catch(()=>{}); setVk(); applyDuck(); });
+  ['play','pause','volumechange'].forEach(e=>vk.addEventListener(e,applyDuck));
+  new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ vk.play().catch(()=>{}); } else if(!vk.paused){ if(!vk.muted){vk.muted=true;vk.loop=true;setVk();} vk.pause(); } }),{threshold:.15}).observe(vk);
+}
 
 /* ---------- modal ---------- */
 const modal=$('#modal'), mv=$('#mVideo');
