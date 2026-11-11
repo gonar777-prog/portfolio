@@ -34,12 +34,10 @@
 <header class="hud-top" id="top">
   <a href="#hero" class="logo glitch" data-text="GONAR">GONAR</a>
   <nav id="nav">
-    <a href="#reel" data-i="reel">Showreel</a>
     <a href="#projects" data-i="projects">Проекты</a>
     <a href="#gallery" data-i="gallery">Визуал</a>
-    <a href="#channels" data-i="channels">Каналы</a>
-    <a href="#skills" data-i="skills">Навыки</a>
-    <a href="#freelance" data-i="freelance">Freelance</a>
+    <a href="#prices" data-i="nav_prices">Цены</a>
+    <a href="#reviews" data-i="nav_reviews">Отзывы</a>
     <a href="#about" data-i="about">Обо мне</a>
     <a href="#contact" data-i="contact">Контакты</a>
   </nav>
@@ -54,8 +52,6 @@
 <aside class="telemetry" aria-hidden="true">
   <div>SCROLL <b id="tScroll">000</b>%</div>
   <div>FPS <b id="tFps">--</b></div>
-  <div>LAT <b id="tLat">50.45</b></div>
-  <div>LON <b id="tLon">30.52</b></div>
   <div class="tbar"><i id="tBar"></i></div>
 </aside>
 
@@ -106,16 +102,31 @@
   <div class="grid" id="grid"></div>
 </section>
 
+<!-- PRICES -->
+<section id="prices" class="sec">
+  <header class="sec-head reveal"><span class="idx">03 /</span><h2 class="glitch" data-text="PRICES" data-i="h_prices">ЦЕНЫ</h2><span class="line"></span></header>
+  <p class="cap reveal" data-i="prices_cap">Стартовые цены. Опишите задачу в Telegram — точную сумму назову в течение часа.</p>
+  <div class="prices" id="priceGrid"></div>
+  <p class="terms-line reveal" data-i="terms_line">2 круга правок бесплатно · предоплата 50 % · первая версия за 2–3 дня · исходники отдаю</p>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="sec">
+  <header class="sec-head reveal"><span class="idx">04 /</span><h2 class="glitch" data-text="REVIEWS" data-i="h_reviews">ОТЗЫВЫ</h2><span class="line"></span></header>
+  <p class="cap reveal"><b class="stars">★★★★★</b> <span data-i="reviews_cap">5.0 на Freelancehunt · 15+ отзывов</span> · <a class="tglink" href="https://freelancehunt.com/freelancer/gonar.html#reviews" target="_blank" rel="noopener" data-i="reviews_all">все отзывы ↗</a></p>
+  <div class="revs" id="revGrid"></div>
+</section>
+
 <!-- GALLERY -->
 <section id="gallery" class="sec">
-  <header class="sec-head reveal"><span class="idx">03 /</span><h2 class="glitch" data-text="VISUALS" data-i="h_gallery">ВИЗУАЛ</h2><span class="line"></span></header>
+  <header class="sec-head reveal"><span class="idx">05 /</span><h2 class="glitch" data-text="VISUALS" data-i="h_gallery">ВИЗУАЛ</h2><span class="line"></span></header>
   <div class="filters reveal" id="gFilters"></div>
   <div class="gal" id="gal"></div>
 </section>
 
 <!-- CHANNELS -->
 <section id="channels" class="sec">
-  <header class="sec-head reveal"><span class="idx">04 /</span><h2 class="glitch" data-text="YOUTUBE" data-i="h_channels">YOUTUBE-ПРОЕКТЫ</h2><span class="line"></span></header>
+  <header class="sec-head reveal"><span class="idx">06 /</span><h2 class="glitch" data-text="YOUTUBE" data-i="h_channels">YOUTUBE-ПРОЕКТЫ</h2><span class="line"></span></header>
   <div class="two">
     <a class="holo tilt reveal chan" href="https://www.youtube.com/@PARANORMA777" target="_blank" rel="noopener" style="--hue:300">
       <img class="bg" src="assets/img/shapka_kanala.webp" alt="PARANORMA" loading="lazy"><img class="avatar" src="assets/img/t_logo_round.webp" alt="" loading="lazy">
@@ -130,13 +141,13 @@
 
 <!-- SKILLS -->
 <section id="skills" class="sec">
-  <header class="sec-head reveal"><span class="idx">05 /</span><h2 class="glitch" data-text="SYSTEMS" data-i="h_skills">НАВЫКИ</h2><span class="line"></span></header>
+  <header class="sec-head reveal"><span class="idx">07 /</span><h2 class="glitch" data-text="SYSTEMS" data-i="h_skills">НАВЫКИ</h2><span class="line"></span></header>
   <div class="skills" id="skillGrid"></div>
 </section>
 
 <!-- FREELANCEHUNT -->
 <section id="freelance" class="sec">
-  <header class="sec-head reveal"><span class="idx">06 /</span><h2 class="glitch" data-text="FREELANCE" data-i="h_fl">FREELANCEHUNT</h2><span class="line"></span></header>
+  <header class="sec-head reveal"><span class="idx">08 /</span><h2 class="glitch" data-text="FREELANCE" data-i="h_fl">FREELANCEHUNT</h2><span class="line"></span></header>
   <div class="terminal reveal">
     <div class="term-bar"><i></i><i></i><i></i><span>gonar@freelancehunt:~$</span></div>
     <pre id="termFl" class="term-body"></pre>
@@ -146,7 +157,7 @@
 
 <!-- ABOUT -->
 <section id="about" class="sec">
-  <header class="sec-head reveal"><span class="idx">07 /</span><h2 class="glitch" data-text="ABOUT" data-i="h_about">ОБО МНЕ</h2><span class="line"></span></header>
+  <header class="sec-head reveal"><span class="idx">09 /</span><h2 class="glitch" data-text="ABOUT" data-i="h_about">ОБО МНЕ</h2><span class="line"></span></header>
   <div class="about reveal">
     <div class="about-txt">
       <p data-i="about1">Я делаю видео, которое хочется досмотреть: анимационные истории, моушн-графику и 3D, а где это даёт результат — подключаю нейросети и собираю из них собственные пайплайны.</p>
@@ -178,7 +189,7 @@
 
 <!-- CONTACT -->
 <section id="contact" class="sec">
-  <header class="sec-head reveal"><span class="idx">08 /</span><h2 class="glitch" data-text="CONTACT" data-i="h_contact">КОНТАКТЫ</h2><span class="line"></span></header>
+  <header class="sec-head reveal"><span class="idx">10 /</span><h2 class="glitch" data-text="CONTACT" data-i="h_contact">КОНТАКТЫ</h2><span class="line"></span></header>
   <div class="two">
     <form class="frame form reveal" id="form">
       <label><span data-i="f_name">Имя</span><input name="name" required autocomplete="name"></label>
@@ -196,6 +207,8 @@
       <small>YOUTUBE PROJECTS</small>
       <a href="https://www.youtube.com/@PARANORMA777" target="_blank" rel="noopener">PARANORMA ↗</a>
       <a href="https://www.youtube.com/@gonarforce" target="_blank" rel="noopener">GONAR FORCE ↗</a>
+      <small data-i="pro_lbl">ДЛЯ КОМПАНИЙ</small>
+      <a href="https://gonar777-prog.github.io/portfolio-pro/" target="_blank" rel="noopener" data-i="pro_link">Бизнес-портфолио (EN/RU) ↗</a>
       <small>FREELANCEHUNT PROFILE</small>
       <a href="https://freelancehunt.com/freelancer/gonar.html#portfolio" target="_blank" rel="noopener">Freelancehunt ↗</a>
     </div>
@@ -203,7 +216,7 @@
 </section>
 </main>
 
-<footer class="foot"><span>© 2026 GONAR</span><a class="tgf" href="https://t.me/aid99999" target="_blank" rel="noopener">TELEGRAM @aid99999 ↗</a><span>DESIGN / MOTION / INTELLIGENCE</span><a href="#hero">↑ TOP</a></footer>
+<footer class="foot"><span>© 2026 GONAR</span><a href="https://gonar777-prog.github.io/portfolio-pro/" target="_blank" rel="noopener" data-i="pro_link">Бизнес-портфолио (EN/RU) ↗</a><a class="tgf" href="https://t.me/aid99999" target="_blank" rel="noopener">TELEGRAM @aid99999 ↗</a><span>DESIGN / MOTION / INTELLIGENCE</span><a href="#hero">↑ TOP</a></footer>
 
 <!-- MODAL -->
 <div id="modal" class="modal" hidden>

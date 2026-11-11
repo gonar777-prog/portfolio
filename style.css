@@ -295,3 +295,24 @@ body.shake main{animation:shake .28s steps(3)}
   .has-card .visitka{grid-column:2;grid-row:1/span 7;width:auto;height:min(70svh,760px);margin:0 0 60px}
   .has-card .big{font-size:clamp(70px,11.5vw,210px)}
 }
+
+/* prices + reviews */
+.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}
+.price{padding:26px 22px 22px;display:flex;flex-direction:column;gap:10px}
+.price.hot{border-color:var(--pink);box-shadow:0 0 30px rgba(255,60,200,.25)}
+.price h3{font:800 italic 20px/1.15 var(--f);color:#fff;letter-spacing:.02em}
+.price .pp{font:900 italic clamp(26px,2.4vw,34px)/1 var(--f);color:var(--cyan);text-shadow:0 0 14px rgba(34,230,255,.5)}
+.price small{font:11px var(--m);color:var(--dim);letter-spacing:.06em}
+.price p{color:var(--txt);font-size:15px;flex:1}
+.price .btn{justify-content:center;text-align:center;margin-top:6px}
+.ptag{position:absolute;top:-1px;right:-1px;font:700 11px var(--m);letter-spacing:.2em;background:var(--pink);color:#fff;padding:5px 10px}
+.terms-line{margin-top:18px;font:12px var(--m);letter-spacing:.08em;color:var(--cyan2);text-align:center}
+.revs{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}
+.rev{padding:22px;display:flex;flex-direction:column;gap:12px}
+.rev blockquote{color:var(--txt);font-size:15px;line-height:1.55;flex:1}
+.rev figcaption{font:11px var(--m);color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.stars{color:#ffc24a;letter-spacing:.15em;text-shadow:0 0 10px rgba(255,194,74,.5)}
+.telemetry{display:none!important}
+@media(max-width:1100px){.prices,.revs{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.prices,.revs{grid-template-columns:1fr}}
+@media(max-width:900px){.hero-meta.top{display:none}}
