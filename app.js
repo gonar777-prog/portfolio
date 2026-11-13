@@ -7,7 +7,7 @@ let lang='ru'; try{lang=localStorage.getItem('lang')||(navigator.language||'').s
 let sound=false, actx=null;
 /* ---------- background music ---------- */
 const VOL=.22, VOL_DUCK=.05;
-let pref='on'; try{pref=localStorage.getItem('music')||'on'}catch(e){}
+let pref='off'; try{pref=localStorage.getItem('music')||'off'}catch(e){} /* music is OFF by default: clients often browse at work */
 const bgm=new Audio('assets/audio/bgm.mp3'); bgm.loop=true; bgm.preload='auto'; bgm.volume=0;
 window.__bgm=bgm; let musicOn=false, started=false, fadeT=null, target=0;
 function setBtn(){ const b=$('#sndBtn'); b.classList.toggle('on',musicOn); b.setAttribute('aria-pressed',musicOn); $('#sndState').textContent=musicOn?'ON':'OFF'; sound=musicOn; }
@@ -48,6 +48,9 @@ function applyLang(){
   $$('[data-pdf]').forEach(el=>{const f='GONAR_Portfolio_'+(lang==='ru'?'RU':'EN')+'.pdf'; el.href='assets/docs/'+f; el.setAttribute('download',f);});
   $('#expFields').innerHTML=T.expf.map(x=>'<div class="holo-mini">'+x+'</div>').join(''); $('#apprList').innerHTML=T.appr.map(x=>'<li>'+x+'</li>').join('');
   buildFilters(); buildGrid(); buildFl(); buildGFilters(); buildGallery();
+  const L=o=>o[lang]||o.ru;
+  $('#priceGrid').innerHTML=PRICES.map(p=>`<div class="frame price reveal in${p.hot?' hot':''}"><div class="corner tl"></div><div class="corner br"></div>${p.hot?`<span class="ptag">${T.hot}</span>`:''}<h3>${L(p.t)}</h3><b class="pp">${L(p.p)}</b><small>${L(p.s)}</small><p>${L(p.d)}</p><a class="btn${p.hot?'':' ghost'}" href="https://t.me/aid99999" target="_blank" rel="noopener">${T.order}</a></div>`).join('');
+  $('#revGrid').innerHTML=REVIEWS.map(r=>`<figure class="frame rev reveal in"><b class="stars">★★★★★</b><blockquote>«${L(r.q)}»</blockquote><figcaption>${L(r.t)} · Freelancehunt</figcaption></figure>`).join('');
   try{localStorage.setItem('lang',lang)}catch(e){}
 }
 $('#langBtn').onclick=()=>{lang=lang==='ru'?'en':'ru'; applyLang(); glitchScreen(); blip(520,.1)};
@@ -55,18 +58,20 @@ $('#langBtn').onclick=()=>{lang=lang==='ru'?'en':'ru'; applyLang(); glitchScreen
 /* ---------- boot ---------- */
 const bootLines=['> GONAR.OS v2.6 // BOOT SEQUENCE','> checking memory ........ [ OK ]','> mounting /deep-field/01 .. [ OK ]','> loading holo-renderer ... [ OK ]','> calibrating star-field .. [ OK ]','> linking channels: PARANORMA, GONAR FORCE','> signal locked.','> WELCOME, OPERATOR_'];
 let bootDone=false;
-function endBoot(){ if(bootDone)return; bootDone=true; startMusic(2500); $('#boot').classList.add('out'); document.body.classList.remove('booting'); setTimeout(()=>$('#boot').remove(),700); heroIn(); }
+function endBoot(){ if(bootDone)return; bootDone=true; try{sessionStorage.setItem('booted','1')}catch(e){} startMusic(2500); $('#boot').classList.add('out'); document.body.classList.remove('booting'); setTimeout(()=>$('#boot').remove(),700); heroIn(); }
 (function boot(){
   const log=$('#bootLog'),fill=$('#bootFill'); let i=0,c=0;
-  if(reduce){ log.textContent=bootLines.join('\n'); fill.style.width='100%'; setTimeout(endBoot,300); return; }
+  let seen=false; try{seen=!!sessionStorage.getItem('booted')}catch(e){}
+  if(reduce||seen){ log.textContent=bootLines.join('\n'); fill.style.width='100%'; setTimeout(endBoot,seen?0:300); return; }
+  $('#boot').addEventListener('click',endBoot);
   (function tick(){
     if(bootDone) return;
-    if(i>=bootLines.length){ showEnter(); return; }
-    const L=bootLines[i]; c+=2; log.textContent=bootLines.slice(0,i).join('\n')+(i?'\n':'')+L.slice(0,c)+'█';
-    if(c>=L.length){ i++; c=0; fill.style.width=(i/bootLines.length*100)+'%'; blip(300+i*70,.04); setTimeout(tick,110);} else setTimeout(tick,14);
+    if(i>=bootLines.length){ setTimeout(endBoot,250); return; }
+    const L=bootLines[i]; c+=7; log.textContent=bootLines.slice(0,i).join('\n')+(i?'\n':'')+L.slice(0,c)+'█';
+    if(c>=L.length){ i++; c=0; fill.style.width=(i/bootLines.length*100)+'%'; blip(300+i*70,.04); setTimeout(tick,45);} else setTimeout(tick,10);
   })();
 })();
-$('#bootSkip').onclick=showEnter;
+$('#bootSkip').onclick=endBoot;
 $('#bootEnter').onclick=endBoot;
 function showEnter(){ if(bootDone)return; $('#bootFill').style.width='100%'; $('#bootSkip').hidden=true; $('#bootEnter').hidden=false; $('#bootEnter').focus(); }
 function heroIn(){ $$('#hero .glitch').forEach(g=>g.classList.add('g')); setTimeout(()=>$$('#hero .glitch').forEach(g=>g.classList.remove('g')),800); }
@@ -151,10 +156,11 @@ function observe(){
 
 /* ---------- showreel ---------- */
 const rv=$('#reelVideo'), rf=$('#reelFrame');
-$('#reelPlay').onclick=()=>{ if(!rv.src)rv.src=rv.dataset.src; rv.muted=false; rv.loop=false; rv.controls=true; rv.play().catch(()=>{rv.muted=true;rv.play()}); rf.classList.add('playing'); blip(900,.1); };
+$('#reelPlay').onclick=()=>{ rv.src=rv.dataset.src; rv.muted=false; rv.loop=false; rv.controls=true; rv.play().catch(()=>{rv.muted=true;rv.play()}); rf.classList.add('playing'); blip(900,.1); };
 rv.addEventListener('timeupdate',()=>{const t=rv.currentTime|0;$('#reelTime').textContent=String(t/60|0).padStart(2,'0')+':'+String(t%60).padStart(2,'0')});
-['play','pause','volumechange'].forEach(e=>rv.addEventListener(e,applyDuck)); rv.addEventListener('ended',()=>{rf.classList.remove('playing');rv.controls=false});
-new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting&&!rv.paused)rv.pause()}),{threshold:.1}).observe(rf);
+['play','pause','volumechange'].forEach(e=>rv.addEventListener(e,applyDuck)); const reelLoop=()=>{ rv.controls=false; rv.muted=true; rv.loop=true; rv.src=rv.dataset.loop; rv.play().catch(()=>{}); };
+rv.addEventListener('ended',()=>{rf.classList.remove('playing');reelLoop();});
+new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ if(rv.muted&&rv.paused) rv.play().catch(()=>{}); } else if(!rv.paused) rv.pause(); }),{threshold:.1}).observe(rf);
 /* ---------- hero business card video (Portfolio Sylar TG) ---------- */
 const vk=$('#vkVideo'), vkB=$('#vkSnd'), vkT=$('#vkSndT');
 if(vk){
@@ -220,7 +226,7 @@ $('#form').addEventListener('submit',e=>{e.preventDefault();const f=new FormData
 let frames=0,last=performance.now(),fps=60;
 function tele(){ const h=document.documentElement; const p=Math.round(scrollY/Math.max(1,h.scrollHeight-innerHeight)*100); $('#tScroll').textContent=String(p).padStart(3,'0'); $('#tBar').style.width=p+'%'; }
 addEventListener('scroll',tele,{passive:true});
-setInterval(()=>{ $('#tLat').textContent=(50.45+Math.random()*.02).toFixed(3); $('#tLon').textContent=(30.52+Math.random()*.02).toFixed(3); },1200);
+
 
 /* ---------- Three.js space ---------- */
 function space(){
