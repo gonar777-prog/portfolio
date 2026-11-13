@@ -156,10 +156,11 @@ function observe(){
 
 /* ---------- showreel ---------- */
 const rv=$('#reelVideo'), rf=$('#reelFrame');
-$('#reelPlay').onclick=()=>{ if(!rv.src)rv.src=rv.dataset.src; rv.muted=false; rv.loop=false; rv.controls=true; rv.play().catch(()=>{rv.muted=true;rv.play()}); rf.classList.add('playing'); blip(900,.1); };
+$('#reelPlay').onclick=()=>{ rv.src=rv.dataset.src; rv.muted=false; rv.loop=false; rv.controls=true; rv.play().catch(()=>{rv.muted=true;rv.play()}); rf.classList.add('playing'); blip(900,.1); };
 rv.addEventListener('timeupdate',()=>{const t=rv.currentTime|0;$('#reelTime').textContent=String(t/60|0).padStart(2,'0')+':'+String(t%60).padStart(2,'0')});
-['play','pause','volumechange'].forEach(e=>rv.addEventListener(e,applyDuck)); rv.addEventListener('ended',()=>{rf.classList.remove('playing');rv.controls=false});
-new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting&&!rv.paused)rv.pause()}),{threshold:.1}).observe(rf);
+['play','pause','volumechange'].forEach(e=>rv.addEventListener(e,applyDuck)); const reelLoop=()=>{ rv.controls=false; rv.muted=true; rv.loop=true; rv.src=rv.dataset.loop; rv.play().catch(()=>{}); };
+rv.addEventListener('ended',()=>{rf.classList.remove('playing');reelLoop();});
+new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ if(rv.muted&&rv.paused) rv.play().catch(()=>{}); } else if(!rv.paused) rv.pause(); }),{threshold:.1}).observe(rf);
 /* ---------- hero business card video (Portfolio Sylar TG) ---------- */
 const vk=$('#vkVideo'), vkB=$('#vkSnd'), vkT=$('#vkSndT');
 if(vk){
