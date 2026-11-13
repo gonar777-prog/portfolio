@@ -50,7 +50,10 @@ function applyLang(){
   buildFilters(); buildGrid(); buildFl(); buildGFilters(); buildGallery();
   const L=o=>o[lang]||o.ru;
   $('#priceGrid').innerHTML=PRICES.map(p=>`<div class="frame price reveal in${p.hot?' hot':''}"><div class="corner tl"></div><div class="corner br"></div>${p.hot?`<span class="ptag">${T.hot}</span>`:''}<h3>${L(p.t)}</h3><b class="pp">${L(p.p)}</b><small>${L(p.s)}</small><p>${L(p.d)}</p><a class="btn${p.hot?'':' ghost'}" href="https://t.me/aid99999" target="_blank" rel="noopener">${T.order}</a></div>`).join('');
-  $('#revGrid').innerHTML=REVIEWS.map(r=>`<figure class="frame rev reveal in"><b class="stars">★★★★★</b><blockquote>«${L(r.q)}»</blockquote><figcaption>${L(r.t)} · Freelancehunt</figcaption></figure>`).join('');
+  $('#revGrid').innerHTML=REVIEWS.map((r,n)=>`<figure class="frame rev reveal in${n>7?' rev-more':''}"><b class="stars">★★★★★</b><blockquote>«${L(r.q)}»</blockquote><figcaption>${L(r.t)} · Freelancehunt</figcaption></figure>`).join('');
+  { const g=$('#revGrid'); let b=$('#revMore'); if(!b){ b=document.createElement('button'); b.id='revMore'; b.type='button'; b.className='btn ghost revmore'; g.after(b); }
+    const txt=()=>g.classList.contains('open')?(lang==='ru'?'Свернуть':'Show less'):(lang==='ru'?`Показать все отзывы (${REVIEWS.length})`:`Show all reviews (${REVIEWS.length})`);
+    b.textContent=txt(); b.onclick=()=>{ g.classList.toggle('open'); b.textContent=txt(); }; }
   try{localStorage.setItem('lang',lang)}catch(e){}
 }
 $('#langBtn').onclick=()=>{lang=lang==='ru'?'en':'ru'; applyLang(); glitchScreen(); blip(520,.1)};
